@@ -7,7 +7,7 @@ GIT_BRANCH=$(shell git rev-parse --symbolic-full-name --abbrev-ref HEAD)
 GIT_DIRTY=$(shell test -z "$$(git status --porcelain)" && echo "clean" || echo "dirty")
 VERSION=$(shell git describe --tag --abbrev=0 --exact-match HEAD 2>/dev/null || (echo 'Git tag not found, fallback to commit id' >&2; echo ${GIT_REVISION}))
 
-METADATA_PATH=csh0101.github.com/fss/pkg/version
+METADATA_PATH=fss/version
 INJECT_VARIABLE=-X ${METADATA_PATH}.gitVersion=${VERSION} -X ${METADATA_PATH}.gitCommit=${GIT_COMMIT} -X ${METADATA_PATH}.gitBranch=${GIT_BRANCH} -X ${METADATA_PATH}.gitTreeState=${GIT_DIRTY} -X ${METADATA_PATH}.buildTime=${BUILD_TIME} -X ${METADATA_PATH}.env=${ENV}
 FLAGS=-trimpath -ldflags "-s -w ${INJECT_VARIABLE}"
 BINARY=fss
