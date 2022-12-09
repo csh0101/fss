@@ -52,6 +52,8 @@ func (c *curl) QueryTextByFilter(ctx context.Context, request *domain.TextFilter
 	if res.err != nil {
 		return nil, res.err
 	}
+	// maybe can just write io.Write to http.ResponseWriter from servals host's Response.Body
+	// it maybe can decrease the memory payload  when network quality is good
 	texts := make([]*domain.Text, 0)
 	res.data.Range(func(key, value interface{}) bool {
 		if val, ok := value.(string); ok {
