@@ -13,6 +13,7 @@ func main() {
 		},
 	}
 	rootCMD.AddCommand(cmd.NewRunCMD())
+	rootCMD.AddCommand(cmd.NewVersionCMD())
 	if err := rootCMD.Execute(); err != nil {
 		panic(err)
 	}
