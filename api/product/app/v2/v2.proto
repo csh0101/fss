@@ -1,0 +1,28 @@
+// // 指定 proto 文件的版本
+// syntax = "proto3";
+
+// // package 命名规则: product.application.version
+// package product.app.v2;
+
+// // go_package 生成 go 文件当中的包名
+// option go_package = "fss/api/product/app/v2";
+
+// // 引入 google 定义的 annotations 文件
+// import "google/api/annotations.proto";
+
+// service TextService {
+//   rpc QueryText(QueryTextReq) returns (QueryTextResp) {
+
+//     // option 还是都加上，可以利用插件自动生成 swagger 文档
+//     option (google.api.http) = {
+//       post: "/article"
+//       body: "*"
+//     };
+//   }
+// }
+
+ 
+// // 参数和返回值定义，这里就不详细列了
+// message QueryTextReq {}
+ 
+// message QueryTextResp {}
