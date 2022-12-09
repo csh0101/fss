@@ -64,11 +64,10 @@ func (t *text) QueryTextByFilter(ctx context.Context, filter *domain.TextFilter)
 	}
 
 	var f primitive.M
-	length := len(condtions)
-	switch {
-	case length == 0:
+	switch len(condtions) {
+	case 0:
 		f = primitive.M{}
-	case length == 1:
+	case 1:
 		f = condtions[0]
 	default:
 		f = primitive.M{"$and": condtions}
