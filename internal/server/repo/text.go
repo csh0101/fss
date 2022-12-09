@@ -74,6 +74,7 @@ func (t *text) QueryTextByFilter(ctx context.Context, filter *domain.TextFilter)
 		f = primitive.M{"$and": condtions}
 	}
 	cursor, err := t.monger.QueryWithCursor(ctx, f)
+	defer cursor.Close(ctx)
 	if err != nil {
 		return nil, err
 	}
